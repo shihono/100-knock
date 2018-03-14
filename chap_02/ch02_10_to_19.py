@@ -6,9 +6,9 @@ import pprint
 from collections import Counter
 
 """ 10 から 19"""
-if not os.path.isfile("data/hightemp.txt"):
+if not os.path.isfile("./data/hightemp.txt"):
     cmd = '''curl http://www.cl.ecei.tohoku.ac.jp/nlp100/data/hightemp.txt >> ./data/hightemp.txt '''
-    family_line = subprocess.check_output(cmd, shell=True).decode('utf-8', errors='replace')
+    cmd_line = subprocess.check_output(cmd, shell=True).decode('utf-8', errors='replace')
 
 with open("./data/hightemp.txt", "r")as f:
     line = f.readlines()

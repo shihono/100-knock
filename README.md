@@ -11,6 +11,8 @@
 利用している外部パッケージ(External python packages)
 * numpy
 * Mecab, natto-py
+* matplotlib
+* pandas
 
 ## notice
 * WIP

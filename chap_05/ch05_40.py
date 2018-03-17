@@ -15,11 +15,12 @@ class Morph:
         return ',\t'.join([self.surface, self.base, self.pos, self.pos1])
 
 
-class MorphSent():
+class MorphSent:
     """形態素Moprhクラスのリスト"""
     def __init__(self, g_value):
         self.morphs = []
-        self.make_morph_sentence_list(sent_list=g_value)
+        if g_value is not None:
+            self.make_morph_sentence_list(sent_list=g_value)
 
     def __str__(self):
         return '\n'.join(["{}".format(m) for m in self.morphs])

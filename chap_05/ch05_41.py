@@ -28,6 +28,45 @@ class Chunk:
         else:
             return False
 
+    def is_contain(self, member, name):
+        """for 47: name のmemberが含まれているかどうか"""
+        morph_list=[]
+        if member == "pos1":
+            morph_list = [m.pos1 for m in self.morphs]
+        elif member == "base":
+            morph_list = [m.base for m in self.morphs]
+        elif member == "surface":
+            morph_list = [m.surface for m in self.morphs]
+
+        if name in morph_list:
+            return True
+        else:
+            return False
+
+    def get_kaku_pattern(self, chunk_list):
+        """for 45: １つのchunkを受け取って「述語＋kaku_listに格納された格」を返す"""
+        for m in self.morphs:
+            if m.pos == '動詞' and len(self.srcs) != 0:
+                kaku_list = []
+                for index in self.srcs:
+                    kaku_list.extend([m2.base for m2 in chunk_list[index].morphs if m2.pos == '助詞'])
+                # kakulistが空のことがあるので条件をつけて回避
+                if len(kaku_list) != 0:
+                    # 文字列で返す
+                    yield [m.base + '\t'] + sorted(kaku_list)
+
+    def get_kaku_pattern46(self,chunk_list):
+        """for 46 :45にkou_listを加えた"""
+        for m in self.morphs:
+            if m.pos == '動詞' and len(self.srcs) != 0:
+                kaku_list = []
+                kou_list = []
+                for index in self.srcs:
+                    kaku_list.extend([m2.base for m2 in chunk_list[index].morphs if m2.pos == '助詞'])
+                    kou_list.extend([''.join([m2.surface for m2 in chunk_list[index].morphs])])
+                if len(kaku_list) != 0:
+                    yield [m.base + '\t'] + sorted(kaku_list)+sorted(kou_list)
+
 
 def create_each_sentence_chunk(sentence_list):
     chunk=None

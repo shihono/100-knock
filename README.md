@@ -8,11 +8,14 @@
 
 
 ## requirement
-利用している外部パッケージ(External python packages)
+利用している外部パッケージ(主に python)
+* cabocha
 * numpy
 * Mecab, natto-py
 * matplotlib
 * pandas
+* pydot
+* etree
 
 ## notice
 * WIP

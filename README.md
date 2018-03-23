@@ -8,14 +8,10 @@
 
 
 ## requirement
-利用している外部パッケージ(主に python)
-* cabocha
-* numpy
-* Mecab, natto-py
-* matplotlib
-* pandas
-* pydot
-* etree
+利用しているツール
+* Cabocha
+* Mecab
+* Stanford CoreNLP
 
 ## notice
 * WIP

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+	<title>Chapter07-69</title>
+    <!-- Bootstrap -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Database: search page</h1>
+        </div>
+        {% if no_query %}
+            <h3> > please input query</h3>
+            <br>
+        {% endif %}
+
+        <form method="post" action='/post'>
+            <!--post query here-->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Artist name</label>
+                <input type="text" name="artist" />
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Aliases</label>
+                <input type="text" name="aliases" />
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Tag</label>
+                <input type="text" name="tag" />
+            </div>
+            <button value="submit" class="btn btn-default">search</button>
+        </form>
+        <br>
+        {% if result_cursor %}
+        <div class="page-header">
+            <h3>Result</h3>
+        </div>
+        <div>
+            <h4>＊ Query : {{ query }}</h4>
+            <br>
+            <table class="table table-bordered">
+                <tr>
+                    <th>name</th>
+                    <th>area</th>
+                    <th>aliases</th>
+                    <th>rating</th>
+                </tr>
+                {% for cursor in result_cursor %}
+                <tr>
+                    <td>{{ cursor.name }}</td>
+                    <td>{{ cursor.area }}</td>
+                    <td>
+                        {% for aliases in cursor.aliases %}
+                            {{ aliases.name }} /
+                        {% endfor %}
+                    </td>
+                    <td>{{ cursor.rating }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

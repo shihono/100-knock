@@ -11,7 +11,9 @@ install_requires = [
     'pydot',
     'lxml',
     'natto-py',
-    'redis'
+    'redis',
+    'pycountry',
+    'tqdm',
 ]
 
 

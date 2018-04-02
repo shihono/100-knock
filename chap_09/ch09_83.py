@@ -23,15 +23,15 @@ def save_result_freq(freq_dic, data_path):
 
 def main():
     # main
-    f_t = defaultdict(lambda: len(f_t))
-    f_tc = defaultdict(lambda: len(f_tc))
-    f_c = defaultdict(lambda : len(f_c))
+    f_t = defaultdict(int)
+    f_tc = defaultdict(int)
+    f_c = defaultdict(int)
     with open('./work/tuple_82.txt', 'r')as f:
         for line in f:
-            f_tc[line.strip()]
+            f_tc[line.strip()] +=1
             t, c = line.strip().split('\t')
-            f_c[c]
-            f_t[t]
+            f_c[c] +=1
+            f_t[t] +=1
     save_result_freq(f_tc, './work/ftc_83.txt')
     save_result_freq(f_t, './work/ft_83.txt')
     save_result_freq(f_c, './work/fc_83.txt')

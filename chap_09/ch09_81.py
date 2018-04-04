@@ -33,11 +33,14 @@ def make_country_list():
 def main(data_path):
     country_pattern = re.compile("|".join(make_country_list()))
     with open('data/enwiki-81.txt', 'w')as fw:
-        for line in islice(ch09_80.shaping_corpus(data_path),10):
+        for line in ch09_80.shaping_corpus(data_path):
+            # 処理に時間がかかるので試しに動かすときは下を使う
+            # for line in islice(ch09_80.shaping_corpus(data_path),10):
             for find_pattern in country_pattern.finditer(line):
                 line = re.sub(find_pattern.group(0), find_pattern.group(0).replace(' ', '_'), find_pattern.string)
             fw.write(line+"\n")
 
 
 if __name__ == '__main__':
+    # データファイルを指定
     main("/Users/shirai/100knock-2017/shihono/sh_chap09/data/enwiki-20150112-400-r100-105752.txt.bz2")

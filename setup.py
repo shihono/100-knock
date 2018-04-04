@@ -14,6 +14,7 @@ install_requires = [
     'redis',
     'pycountry',
     'tqdm',
+    'gensim',
 ]
 
 

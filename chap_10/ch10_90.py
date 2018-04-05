@@ -8,6 +8,10 @@ WORD_VECTOR_FILE = './work/vector90_small.txt'
 "90. word2vecによる学習"
 
 
+def load_w2v_data():
+    return KeyedVectors.load_word2vec_format(WORD_VECTOR_FILE)
+
+
 def main(text_data_path):
     if os.path.exists(WORD_VECTOR_FILE):
         word_vectors = KeyedVectors.load_word2vec_format(WORD_VECTOR_FILE)

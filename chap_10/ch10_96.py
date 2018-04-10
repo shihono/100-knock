@@ -13,7 +13,7 @@ def get_one_word_country():
             yield name
 
 
-def main():
+def main(is_return=None):
     w2v_vec = ch10_90.load_w2v_data()
     country_list = ch09_81.make_country_list() + list(get_one_word_country())
     country_vec = {}
@@ -21,12 +21,15 @@ def main():
         try:
             country_vec[country] = w2v_vec[country]
         except KeyError:
-            print("{} is not in vocab".format(country))
-
-    with open("./work/96_country_vec.txt", 'w')as f:
-        for k, v in country_vec.items():
-            f.write("{},{}\n".format(k, v))
-    print("write ./work/96_country_vec.txt")
+            pass
+            # print("{} is not in vocab".format(country))
+    if is_return:
+        return country_vec
+    else:
+        with open("./work/96_country_vec.txt", 'w')as f:
+            for k, v in country_vec.items():
+                f.write("{},{}\n".format(k, v))
+        print("write ./work/96_country_vec.txt")
 
 
 if __name__ == '__main__':

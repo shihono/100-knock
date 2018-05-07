@@ -21,21 +21,23 @@ def save_result_freq(freq_dic, data_path):
     print("save {}".format(data_path))
 
 
-def main():
+def main(return_value=False):
     # main
     f_t = defaultdict(int)
     f_tc = defaultdict(int)
     f_c = defaultdict(int)
     with open('./work/tuple_82.txt', 'r')as f:
         for line in f:
-            f_tc[line.strip()] +=1
             t, c = line.strip().split('\t')
-            f_c[c] +=1
-            f_t[t] +=1
-    save_result_freq(f_tc, './work/ftc_83.txt')
-    save_result_freq(f_t, './work/ft_83.txt')
-    save_result_freq(f_c, './work/fc_83.txt')
-    # 分布出力
+            f_tc[t+'\t'+c] += 1
+            f_c[c] += 1
+            f_t[t] += 1
+    if not return_value:
+        save_result_freq(f_tc, './work/ftc_83.txt')
+        save_result_freq(f_t, './work/ft_83.txt')
+        save_result_freq(f_c, './work/fc_83.txt')
+    else:
+        return f_tc, f_t, f_c
 
 
 if __name__ == '__main__':

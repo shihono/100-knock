@@ -1,6 +1,6 @@
 # 100-knock
 
-[言語処理100本ノック](http://www.cl.ecei.tohoku.ac.jp/nlp100/) のコード.
+[言語処理100本ノック 2015](http://www.cl.ecei.tohoku.ac.jp/nlp100/) のコード.
 
 ## about
 * python3.5.1
@@ -12,7 +12,3 @@
 * Cabocha
 * Mecab
 * Stanford CoreNLP
-
-## notice
-* WIP
-* 勉強会で書いたプログラムを修正しながらコミットしています.
